@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustering Analysis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="Introduction.html">Introduction</a>
+        <a href="DataPrep_EDA.html">DataPrep_EDA</a>
+        <a href="Clustering.html">Clustering</a>
+        <a href="PCA.html">PCA</a>
+        <a href="NaiveBayes.html">NaiveBayes</a>
+        <a href="DecTrees.html">DecTrees</a>
+        <a href="SVMs.html">SVMs</a>
+        <a href="Regression.html">Regression</a>
+        <a href="NN.html">NN</a>
+        <a href="Conclusions.html">Conclusions</a>
+    </div>
+
+    <section id="overview">
+        <h2>Overview</h2>
+        <p>Clustering is the task of dividing the population or data points into a number of groups such that data points in the same groups are more similar to other data points in the same group and dissimilar to the data points in other groups. It is basically a collection of objects on the basis of similarity and dissimilarity between them.</p>
+        <p>For example, the data points in the graph below clustered together can be classified into one single group. We can distinguish the clusters, and we can identify that there are 3 clusters in the below picture.</p>
+        <img src="/Users/aryamansingh/Desktop/CUB course/Machine learning /part2project/coded-main/merge3cluster.jpg" alt="Clustering Overview Image 1">
+        <p>Why Clustering?</p>
+        <p>Clustering is very much important as it determines the intrinsic grouping among the unlabelled data present. There are no criteria for good clustering. It depends on the user, and what criteria they may use which satisfy their need. For instance, we could be interested in finding representatives for homogeneous groups (data reduction), finding “natural clusters” and describing their unknown properties (“natural” data types), in finding useful and suitable groupings (“useful” data classes) or in finding unusual data objects (outlier detection). This algorithm must make some assumptions that constitute the similarity of points and each assumption make different and equally valid clusters.</p>
+        <p>Hierarchical Clustering: Hierarchical clustering is basically an unsupervised clustering technique which involves creating clusters in a predefined order. The clusters are ordered in a top to bottom manner. In this type of clustering, similar clusters are grouped together and are arranged in a hierarchical manner. It can be further divided into two types namely agglomerative hierarchical clustering and Divisive hierarchical clustering. In this clustering, we link the pairs of clusters all the data objects are there in the hierarchy.</p>
+        <p>Non Hierarchical Clustering: Non Hierarchical Clustering involves formation of new clusters by merging or splitting the clusters. It does not follow a tree-like structure like hierarchical clustering. This technique groups the data in order to maximize or minimize some evaluation criteria. K means clustering is an effective way of non hierarchical clustering. In this method, the partitions are made such that non-overlapping groups having no hierarchical relationships between themselves.</p>
+        <p>Difference between Hierarchical Clustering and Non Hierarchical Clustering:</p>
+        <table border="1">
+            <tr>
+                <th>Hierarchical Clustering</th>
+                <th>Non Hierarchical Clustering</th>
+            </tr>
+            <tr>
+                <td>Creates clusters in a predefined order from top to bottom.</td>
+                <td>Formation of new clusters by merging or splitting the clusters instead of following a hierarchical order.</td>
+            </tr>
+            <tr>
+                <td>Considered less reliable than Non Hierarchical Clustering.</td>
+                <td>Comparatively more reliable than Hierarchical Clustering.</td>
+            </tr>
+            <tr>
+                <td>Considered slower than Non Hierarchical Clustering.</td>
+                <td>Comparatively faster than Hierarchical Clustering.</td>
+            </tr>
+            <tr>
+                <td>Problematic to apply when data has a high level of error.</td>
+                <td>Can work better than Hierarchical clustering even when error is present.</td>
+            </tr>
+            <tr>
+                <td>Comparatively easier to read and understand.</td>
+                <td>The clusters are difficult to read and understand as compared to Hierarchical clustering.</td>
+            </tr>
+            <tr>
+                <td>Relatively unstable compared to Non Hierarchical clustering.</td>
+                <td>A relatively stable technique.</td>
+            </tr>
+        </table> 
+        <h3>Data Preprocessing</h3>
+    <p>The dataset will first be cleaned to handle missing values and ensure numerical data is correctly formatted for analysis. Since the dataset has clear numerical values but also includes empty columns and rows, we'll remove or ignore these parts in our analysis.</p>
+    <h3>Feature Selection</h3>
+    <p>We will use the minimum, median, and maximum values of each vehicle type as features for clustering. This approach assumes these statistics are representative of the distributions of vehicle efficiencies (or another relevant metric) across different propulsion technologies.</p>
+    <h3>Normalization</h3>
+    <p>Given the significant differences in ranges (e.g., maximum values ranging from 62.0 to 703.0), data normalization is crucial to ensure one dimension does not dominate the clustering algorithm's distance calculations.</p>
+    <h3>Choosing the Clustering Algorithm</h3>
+    <p>K-Means: A popular choice for clustering where we specify the number of clusters in advance. Given we have three vehicle types, we might initially choose three clusters but will also evaluate the dataset to see if a different number of clusters is more appropriate based on the data distribution.</p>
+    <p>Hierarchical Clustering: This method will be used to visually inspect the dataset's structure through a dendrogram, which might help identify the natural number of clusters before deciding on the exact clustering approach.</p>
+    <h3>Determining the Number of Clusters</h3>
+    <p>Use methods like the Elbow Method, the Silhouette Coefficient, or the Dendrogram from hierarchical clustering to determine the optimal number of clusters if not pre-determined by the data categories.</p>
+    <h3>Clustering Execution</h3>
+    <p>Apply the chosen clustering algorithm to the normalized data. We'll analyze the clusters to see how vehicles are grouped based on their efficiency characteristics (minimum, median, and maximum values).</p>
+    <h3>Analysis and Interpretation</h3>
+    <p>Evaluate the clusters to understand the grouping. For example, electric vehicles might cluster together due to lower minimum and median values but have a wide range up to a high maximum, indicating a few high-performance outliers.</p>
+    
+    <img src="path_to_image_2.jpg" alt="Clustering Overview Image 2">
+</section>
+
+<section id="data-prep">
+    <h2>Data Prep</h2>
+    <p>All models and methods require specific data formats. Clustering requires ONLY unlabeled numeric data. Explain this and show an image of the sample of data you plan to use.</p>
+    <p>Clustering algorithms, such as K-Means, Hierarchical Clustering, DBSCAN, etc., are designed to identify natural groupings or clusters within a dataset based on the similarities and differences in the data. These algorithms typically require unlabeled numeric data for several reasons:</p>
+    <ul>
+        <li><strong>Unlabeled Data:</strong> Clustering is a form of unsupervised learning, meaning it does not rely on pre-labeled outcomes to train a model. Instead, it analyzes the structure of the data itself to identify patterns. The absence of labels allows clustering algorithms to be used for exploratory data analysis, helping to uncover hidden structures or groupings in the data that might not be immediately apparent.</li>
+        <li><strong>Numeric Data:</strong> Clustering algorithms calculate distances or similarities between data points to determine how to group them. These calculations are inherently mathematical and require numeric input. For instance, the Euclidean distance (the straight-line distance between two points in multidimensional space) is a common measure used to assess similarity in many clustering techniques. While some algorithms can work with categorical data by using specialized distance measures, numeric data is directly compatible with a wide range of distance metrics and simplifies the clustering process.</li>
+    </ul>
+    <p>For the dataset related to Gasoline Vehicles, Hybrid Cars, and All-Electric Vehicles, the numeric data we plan to use includes the "Minimum", "Median", and "Maximum" range values for each vehicle type. This data is ideal for clustering because it is numeric and represents different aspects (features) of each vehicle's performance, allowing us to explore natural groupings based on vehicle range capabilities.</p>
+    <p>Let's prepare a sample of the data in the correct format for clustering and provide a link to the sample data along with an image showing its structure:</p>
+    <ul>
+        <li>Preparing the Data Sample: We will create a DataFrame with the necessary numeric features.</li>
+        <li>Saving the Data Sample: The DataFrame will be saved to a CSV file, which can be linked for download.</li>
+        <li>Showing the Data Sample: A snippet of the DataFrame will be displayed to illustrate the format.</li>
+    </ul>
+    <p>Here is a sample of the data prepared for clustering:</p>
+    <table border="1">
+        <tr>
+            <th>Vehicle Type</th>
+            <th>Minimum Range (mi)</th>
+            <th>Median Range (mi)</th>
+            <th>Maximum Range (mi)</th>
+        </tr>
+        <tr>
+            <td>Gasoline Vehicles</td>
+            <td>240.0</td>
+            <td>412.0</td>
+            <td>703.0</td>
+        </tr>
+        <tr>
+            <td>Hybrid Cars</td>
+            <td>150.0</td>
+            <td>440.0</td>
+            <td>600.0</td>
+        </tr>
+        <tr>
+            <td>All-Electric Vehicles</td>
+            <td>62.0</td>
+            <td>83.5</td>
+            <td>294.0</td>
+        </tr>
+    </table>
+    <p>This table showcases the structured numeric data format suitable for clustering, focusing on the range capabilities (Minimum, Median, Maximum) of different vehicle types.</p>
+</section>
+
+<section id="code">
+    <h2>Code</h2>
+    <a href="https://github.com/aryamansingh01/machine-learning-code-">Link to the code</a>
+</section>
+
+<section id="results">
+    <h2>Results</h2>
+    <p>Discuss, illustrate, describe, and visualize the results. What values of k did you use for k-means? What did the Silhouette method tell you about the "best k"? Using the hierarchical clustering, how did this compare and coincide with the k-means?</p><section id="results">
+        <h2>Results</h2>
+        
+        <h3>Hierarchical Clustering Dendrogram (Cosine Similarity)</h3>
+        <img src="/Users/aryamansingh/Desktop/CUB course/Machine learning /part2project/coded-main/HierarchicalClusteringDendrogram(CosineSimilarity).png" alt="Hierarchical Clustering Dendrogram">
+        <p>The result of hierarchical clustering is visualized in this dendrogram, where each leaf stands for an entity—a state or a region, depending on the labels along the x-axis. Here, cosine similarity is the metric that is employed, and it is very helpful for high-dimensional data. Cosine similarity is a measure of orientation rather than magnitude, in contrast to Euclidean distance. It is frequently employed in text analysis and other data types where the direction of the data points is more significant than their quantity.</p>
+        <p>The y-axis in this dendrogram shows the separation between clusters; an orthogonal vector in high-dimensional space indicates total dissimilarity at a distance of 1, while a distance of 0 indicates complete similarity. Each entity is first regarded as a separate cluster in the clustering process, which gradually unites clusters based on their cosine similarity until every entity is a part of a single cluster.</p>
+        <p><strong>Specific Observations:</strong></p>
+        <ul>
+            <li>Entities such as "DE" and "UT" were merged at a very low cosine distance, indicating a high similarity.</li>
+            <li>In contrast, some entities, such as "RI" and "MD", were merged at higher levels, indicating less similarity.</li>
+            <li>The overall structure of the dendrogram with many entities joining at low levels of distance suggests that there are groups of entities with high internal similarity.</li>
+        </ul>
+        
+        
+        <h3>3D K-Means Clustering</h3>
+        <img src="/Users/aryamansingh/Desktop/CUB course/Machine learning /part2project/coded-main/HierarchicalClusteringDendrogram.png" alt="3D K-Means Clustering">
+        <p>The second image's 3D scatter plot shows data points that have been K-Means grouped. Most usually, the plot's axes are the initial three primary components, or original characteristics. There seems to be a clustering of the red data points around two centroids (denoted with a 'X').</p>
+        <p><strong>Specific Observations:</strong></p>
+        <ul>
+            <li>The presence of distinct centroids suggests that the algorithm has identified different groupings in the data.</li>
+            <li>The relative closeness of the data points to each centroid indicates the strength of the association with that cluster.</li>
+            <li>The spatial distribution gives a sense of the variance within each cluster.</li>
+        </ul>
+       
+        
+        <h3>Hierarchical Clustering Dendrogram (Simple Example)</h3>
+        <img src="/Users/aryamansingh/Desktop/CUB course/Machine learning /part2project/coded-main/HierarchicalClusteringDendrogram(CosineSimilarity).png" alt="Simple Hierarchical Clustering Dendrogram">
+        <p>The third picture is a straightforward dendrogram that displays the hierarchical clustering of three different vehicle kinds: hybrid cars, all-electric cars, and gasoline cars. The separation between separate entities (or clusters) is shown by the height of the horizontal lines.</p>
+        <p><strong>Specific Observations:</strong> Gasoline and hybrid vehicles differ greatly from all-electric vehicles since they have been combined to a far greater extent. Hybrid cars and gasoline cars are categorized together at a lower level since they are more similar to one another.</p>
+        
+        <h3>Overarching Learnings from Grouping</h3>
+        <p>K-Means and hierarchical clustering both shed light on the innate categories that exist within the data:</p>
+        <ul>
+            <li>Hierarchical Clustering: Useful when the number of clusters is unknown beforehand, providing a hierarchy of clusters that demonstrates the link between entities in a subtle manner.</li>
+            <li>K-Means Clustering: Effective for large datasets when an approximate number of clusters is known, interpreting centroids as the average representation of its members.</li>
+        </ul>
+        
+        <p><strong>Comparing Hierarchical and K-Means Clustering:</strong></p>
+        <p>A criterion called the silhouette score is employed to determine the effectiveness of a clustering process. The silhouette scores for various values of k are analyzed to determine the "best" number of clusters for this specific dataset, indicating the fit of data points within each cluster.</p>
+        
+        <p><strong>Silhouette Scores:</strong></p>
+        <ul>
+            <li>For k=2: 0.419</li>
+            <li>For k=3: 0.310</li>
+            <li>For k=4: 0.120</li>
+        </ul>
+        <p>Based on these scores, k=2 is identified as the optimal number of clusters, suggesting that the data is best divided into two clusters where items within each cluster are more similar to each other than to those in other clusters.</p>
+        <img src="/Users/aryamansingh/Desktop/CUB course/Machine learning /part2project/coded-main/SilhouetteScoresForVariouskValues.png" alt="Silhouette Analysis Visualization">
+    </section>
+    
+   
+    
+    
+</section>
+
+<section id="conclusions">
+    <h2>Conclusions</h2>
+    <p>What did you learn that pertains to your topic?</p>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

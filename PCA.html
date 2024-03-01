@@ -1,0 +1,154 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Data Science Project Journey</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body> 
+        <div class="navbar">
+            <a href="Introduction.html">Introduction</a>
+            <a href="DataPrep_EDA.html">DataPrep_EDA</a>
+            <a href="Clustering.html">Clustering</a>
+            <a href="PCA.html">PCA</a>
+            <a href="NaiveBayes.html">NaiveBayes</a>
+            <a href="DecTrees.html">DecTrees</a>
+            <a href="SVMs.html">SVMs</a>
+            <a href="Regression.html">Regression</a>
+            <a href="NN.html">NN</a>
+            <a href="Conclusions.html">Conclusions</a>
+        </div>
+        <section id="pca-overview">
+            <h2>Overview</h2>
+            <section id="pca-overview">
+                <h2>Overview</h2>
+                <p>Principal Component Analysis (PCA) is a statistical technique that creates principal components—a collection of values for linearly uncorrelated variables—from a set of observations of potentially correlated variables using an orthogonal transformation. The number of original variables is equal to or fewer than the number of principal components. The first principal component has the highest variance, explaining the most variability in the data, with each subsequent component having the highest variance possible while being orthogonal to the preceding components.</p>
+                
+                <h3>Eigenvalues and Eigenvectors in PCA</h3>
+                <ul>
+                    <li><strong>Eigenvectors:</strong> These are the paths that a specific linear transformation follows, merely extending or compressing the data and perhaps altering its sign. In PCA, these represent the directions along which variance is maximized, known as principal components.</li>
+                    <li><strong>Eigenvalues:</strong> These indicate the amount of variance changed in the direction of its eigenvector. Higher eigenvalues correlate to more significant directions with more variation, highlighting the "importance" of each principal component.</li>
+                </ul>
+                
+                <h3>Dimensionality Reduction</h3>
+                <p>Dimensionality reduction simplifies datasets by reducing the number of random variables under consideration, leading to simplified analysis, reduced overfitting, computational efficiency, easier visualization, and noise discarding.</p>
+                
+                <h3>Challenges Posed by High-Dimensional Data</h3>
+                <p>High-dimensional data, or the "curse of dimensionality," introduces challenges like data sparsity, increased complexity, computational costs, and overfitting risks.</p>
+                
+                <h3>Dimensionality Reduction to Address High-Dimensional Challenges</h3>
+                <p>Dimensionality reduction mitigates these challenges by reducing sparsity, decreasing complexity, saving computational costs, and mitigating overfitting.</p>
+                
+                <h3>Visualization 1: PCA-Reduced Scatter Plot</h3>
+                <p>We simulate a high-dimensional dataset, perform PCA, and visualize the first two principal components to see patterns and separations in a reduced dimension.</p>
+                <img src="/Users/aryamansingh/Desktop/CUB course/Machine learning /part2project/coded-main/PCAexample1.png" alt="PCA-Reduced Scatter Plot">
+                
+                <h3>Visualization 2: Scree Plot of Eigenvalues</h3>
+                <p>The scree plot displays the variance explained by each principal component, helping to decide how many components to keep based on the 'elbow method'.</p>
+                <img src="/Users/aryamansingh/Desktop/CUB course/Machine learning /part2project/coded-main/PCAexample2.png" alt="Scree Plot of Eigenvalues">
+                
+                <h3>Visualization Interpretation</h3>
+                <ul>
+                    <li>The scatter plot demonstrates the dataset reduced to two principal components, revealing underlying patterns not visible in high-dimensional space.</li>
+                    <li>The scree plot illustrates the importance of each principal component, guiding the selection of components that capture a substantial amount of variance.</li>
+                </ul>
+                
+                <h3>Dimensionality Reduction and Its Importance</h3>
+                <p>PCA aids in dataset simplification, model generalization improvement, computational efficiency, and noise reduction, addressing challenges posed by high-dimensional spaces.</p>
+                
+                <h3>Challenges of High-Dimensional Data</h3>
+                <p>High-dimensional spaces complicate distance metrics, visualization, computational resources, and data sparsity, which PCA helps to alleviate by focusing on the most significant bases.</p>
+            </section>
+            
+        </section>
+    
+        <section id="pca-data-prep">
+            <h2>Data Prep</h2>
+            <p>Principal Component Analysis (PCA) is used to highlight variance and bring out significant patterns in a dataset, simplifying data exploration and visualization.</p>
+            
+            <h3>Data Requirements for PCA:</h3>
+            <ul>
+                <li><strong>Numeric Data:</strong> PCA requires numerical data due to algebraic procedures involved, such as eigenvalue decomposition and the computation of covariance or correlation matrices. Categorical variables must be encoded into numeric values before PCA application.</li>
+                <li><strong>Scaled Data:</strong> Scaling is crucial as PCA is sensitive to the variances of original variables. Standardization (mean = 0 and standard deviation = 1) is commonly used to ensure each feature contributes equally to the analysis.</li>
+                <li><strong>Sufficient Observations:</strong> Ideally, the dataset should have more observations than variables to make PCA relevant. However, PCA can still be useful in high-dimensional data to identify patterns or reduce dimensionality.</li>
+                <li><strong>Low to Moderate Multicollinearity:</strong> While PCA can reduce multicollinearity, very high multicollinearity may signify underlying issues not addressable by PCA alone.</li>
+            </ul>
+            
+            <p>For the dataset involving states, years, and total vehicles, one approach is to sum the total vehicles for each state across all years to create a single feature representing total vehicles sold per state. This preprocessing step simplifies the data for PCA.</p>
+            
+            <p>Example preprocessing steps:</p>
+            <ul>
+                <li>Loading the dataset into a DataFrame.</li>
+                <li>Summing total vehicles for each state across years or using yearly data as separate features.</li>
+                <li>Standardizing features to address PCA's variance sensitivity.</li>
+            </ul>
+            <img src="/Users/aryamansingh/Desktop/CUB course/Machine learning /part2project/coded-main/Sales.png" alt="DataFrame Sample">
+            
+            <p>Given a dataset <code>state_year_totals_electric.csv</code>, suitable for PCA might include numeric totals for each year, transformed into a feature set with each year's total as a separate column, representing different states or entities.</p>
+            
+            <p>Here is an example of what the DataFrame might look like before applying PCA, using the data you've provided:</p>
+            
+            
+            <p>Example of scaled numerical data prepared for PCA analysis:</p>
+            <img src="/Users/aryamansingh/Desktop/CUB course/Machine learning /part2project/coded-main/Fuel.png" alt="DataFrame sample">
+            <p>This image represents the type of preprocessing—particularly, scaling—required for successful PCA application, ensuring each feature contributes equally to the analysis without being influenced by its original scale.</p>
+        </section>
+        
+    
+        <section id="pca-code">
+            <h2>Code</h2>
+            <p>The PCA analysis is conducted using R or Python. The code includes steps for data normalization, calculation of the covariance matrix, eigenvalues, and eigenvectors, and finally, the projection of the original data into the principal component space.</p>
+            <a href="https://github.com/aryamansingh01/machine-learning-code-">Link to the PCA code</a>
+        </section>
+    
+        <section id="pca-results">
+            <h2>Results</h2>
+        
+            <p>A biplot is frequently used to show the relationship between the original variables and the principal components (PCs) produced using PCA. In a biplot, both the loadings (PCA coefficients or eigenvectors) and the scores (transformed variable data) are displayed on the same plot, illustrating the relationship between the original variables and the principal components.</p>
+        
+            <ul>
+                <li><strong>Scores:</strong> Represent the distribution of data points in the new feature space created by the principal components.</li>
+                <li><strong>Loadings:</strong> Represent how the original variables influence the principal components, showing the contribution of each original variable to the components.</li>
+                <li>The observations are represented by points (scores), and the original variables by vectors (loadings).</li>
+                <li>The vector's length indicates the degree of correlation between the principal component and the original variable.</li>
+                <li>Angles between vectors approximate the correlation between original variables.</li>
+            </ul>
+        
+            <p>The biplot allows observation of the contribution of each original variable to the principal components and how each observation is characterized by them.</p>
+        
+            <h3>Biplot Visualization</h3>
+            <img src="/Users/aryamansingh/Desktop/CUB course/Machine learning /part2project/coded-main/ExplainScreenshot.png" alt="PCA Biplot Visualization">
+            <p>The biplot visualizes the principal component scores and loadings for the first two principal components derived from the PCA.</p>
+        
+            <h3>Biplot Interpretation</h3>
+            <ul>
+                <li><strong>Scores (Data Points):</strong> Projected data points onto the plane made up of the first two principal components, indicating collections of related observations.</li>
+                <li><strong>Loadings (Vectors):</strong> Eigenvectors corresponding to each original variable, indicating how each variable affects the principal components.</li>
+                <li><strong>Correlations:</strong> The angle between vectors shows the correlation between the initial variables.</li>
+                <li><strong>Contribution to Variance:</strong> Vectors aligned with principal component axes contribute most to the variance along those axes.</li>
+            </ul>
+        
+            <h3>PCA Result Plot Interpretations</h3>
+            <p>PCA scatter plots visualize the data points in the space defined by the first two principal components (PC1 and PC2), providing insights into the dataset's variance and data distribution.</p>
+        
+            <h4>Fuel</h4>
+            <img src="/Users/aryamansingh/Desktop/CUB course/Machine learning /part2project/coded-main/PCA_fuel.png" alt="PCA Result Plot for Fuel">
+            <p>This plot visualizes the data in the reduced-dimensional space created by PCA, showing the distribution and variance among observations.</p>
+        
+            <h4>Sales</h4>
+            <img src="/Users/aryamansingh/Desktop/CUB course/Machine learning /part2project/coded-main/PCA_sales.png" alt="PCA Result Plot for Vehicle Sales">
+            <p>This PCA scatter plot visualizes the vehicle sales data points in the space defined by PC1 and PC2, illustrating the variance and distribution in the dataset.</p>
+        
+            <p>These visualizations and interpretations provide a comprehensive view of the dataset's structure, the contributions of original variables, and insights into specific segments of the data through the lens of PCA.</p>
+        </section>
+        
+    
+        <section id="pca-conclusions">
+            <h2>Conclusions</h2>
+            <p>Through PCA, we have learned about the significant dimensions that capture the most variance in the data, allowing for a simplified yet comprehensive analysis. This technique has unveiled patterns and relationships within the data, enhancing our understanding and providing valuable insights into our topic.</p>
+        </section>
+            
+            <script src="style.js"></script>
+    </body>
+</html>

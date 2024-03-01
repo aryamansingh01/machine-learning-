@@ -1,0 +1,138 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Machine Learning project</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body> 
+        <div class="navbar">
+            <a href="Introduction.html">Introduction</a>
+            <a href="DataPrep_EDA.html">DataPrep_EDA</a>
+            <a href="Clustering.html">Clustering</a>
+            <a href="PCA.html">PCA</a>
+            <a href="NaiveBayes.html">NaiveBayes</a>
+            <a href="DecTrees.html">DecTrees</a>
+            <a href="SVMs.html">SVMs</a>
+            <a href="Regression.html">Regression</a>
+            <a href="NN.html">NN</a>
+            <a href="Conclusions.html">Conclusions</a>
+        </div>
+
+        <header>
+            <h1>Data Preparation and Exploratory Data Analysis (EDA)</h1>
+        </header>
+        <main>
+            <section class="data-sources">
+                <h2>Data Sources</h2>
+                <p>Here, we discuss the sources of our data, including websites, APIs, and raw data links.</p>
+                <!-- Example of API usage -->
+                <div class="api-example">
+                    <h3>API Used: News API </h3>
+                    <p>Website: <a href="https://newsapi.org/account">https://newsapi.org/account</a></p>
+                    <p>Core Endpoint: <code>/data/endpoint</code></p>
+                    <p>URL GET Example: <code>hhttp://news.org/index7.php</code></p>
+                </div>
+                <div class="api-example">
+                    <h3>Office of Energy efficiency and renewable energy </h3>
+                    <p>Website: <a href="https://www.energy.gov/eere/vehicles/fact-939-august-22-2016-all-electric-vehicle-ranges-can-exceed-those-some-gasoline">https://www.energy.gov/eere/vehicles/fact-939-august-22-2016-all-electric-vehicle-ranges-can-exceed-those-some-gasoline</a></p>
+                    <p>Dataset: <code>The dataset comparing the range in miles for Gasoline Vehicles, Hybrid Cars, and All-Electric Vehicles serves several informative and analytical purposes. Here's an analysis of why this dataset might be used and its significance:                    </code></p>
+                    <p>Why : <code>This dataset allows for a direct comparison between different types of vehicles based on their driving range. This is particularly useful for consumers, manufacturers, and policymakers to understand the performance and efficiency of various vehicle technologies.</code></p>
+                </div>
+                <div class="api-example">
+                    <h3>API Used: News API </h3>
+                    <p>Website: <a href="https://www.kaggle.com/code/saifuddinlokhand/audi-car-analysis/input">https://www.kaggle.com/code/saifuddinlokhand/audi-car-analysis/input</a></p>
+                    <p>Dataset<code>A dataset detailing the number of electric cars versus petrol (gasoline) cars manufactured by Audi serves multiple insightful purposes, reflecting both on the automotive industry's trends and Audi's strategic positioning within it. Here's a brief explanation of why such data might be gathered:</code></p>
+                    <p>Why used <code>By comparing the numbers of electric and petrol cars, stakeholders can gauge Audi's strategy and how it aligns with global trends towards electrification. This data can indicate Audi's readiness to compete in the growing EV market against other manufacturers.</code></p>
+                    <div class="api-example">
+                        <h3>Electric Vechile population data  </h3>
+                        <p>Website: <a href=https://catalog.data.gov/dataset/electric-vehicle-population-data>https://catalog.data.gov/dataset/electric-vehicle-population-data</a></p>
+                        <p>Dataset<code>This dataset shows the Battery Electric Vehicles (BEVs) and Plug-in Hybrid Electric Vehicles (PHEVs) that are currently registered in United States.</code></p>
+                       
+                </div>
+
+                </div>
+
+
+            </section>
+            <section class="data-visualization">
+                <h2>Unlceaned Data and Cleaned <Datag></Datag></h2>
+                <p>Below are visual representations of the raw and cleaned data to better understand the dataset's characteristics.</p>
+                <!-- Visualization Example -->
+                <div class="visualization">
+                    <img src="uncleaned_data_electric vechiles.png" alt="Raw Data">
+                    <p>Raw Data</p>
+                </div>
+                <div class="visualization">
+                    <img src="cleaned_data_electric_vechiles .png" alt="Cleaned Data">
+                    <p>Cleaned Data</p>
+                </div>
+                <section class="data-visualization">
+                    <h2>Data Visualization</h2>
+                    <div class="visualization-description">
+                        <h3>Range Comparison Among Vehicle Types</h3>
+                        <img src="range.png" alt="Range Comparison Among Vehicle Types">
+                       
+                        <p>This bar chart compares the minimum, median, and maximum range of gasoline vehicles, hybrid cars, and all-electric vehicles. Gasoline vehicles have a wide range of distances they can travel on a single tank, with the median notably lower than the maximum. Hybrid cars have a narrower range spectrum but still a significant difference between the minimum and median values. All-electric vehicles show a more significant disparity between minimum and median ranges, indicating variability in battery life and efficiency among different models.</p>
+                    </div>
+                    <div class="visualization-description">
+                        <h3>Total Count of Alternative Fuel Vehicle Laws by CSV File</h3>
+                        <img src="alternativefuel.png" alt="Total Count of Alternative Fuel Vehicle Laws by CSV File">
+                    
+                        <p>This bar chart indicates the number of laws related to different types of alternative fuel vehicles, categorized by the file name which likely corresponds to a database or a study. Hybrid and electric vehicles have the highest count, suggesting they are the most regulated or incentivized among alternative fuel options, with CNG (Compressed Natural Gas) and biodiesel following.</p>
+                    </div>
+                    <div class="visualization-description">
+                        <h3>Number of Models Made by AUDI - Electric VS Petrol</h3>
+                        <img src="audi.png" alt="Number of Models Made by AUDI - Electric VS Petrol">
+                        
+                        <p>This bar chart contrasts the number of petrol and electric models produced by Audi. The 'Dataset 1' bar, representing petrol models, shows a minimal number, while 'Dataset 2', representing electric models, shows a substantial number (10,668), indicating a significant shift towards electric vehicle production by Audi.</p>
+                    </div>
+                    <div class="visualization-description">
+                        <h3>Comparison of Car Prices - Overall Market vs. Electric Vehicles</h3>
+                        <img src="car_price.png" alt="Comparison of Car Prices - Overall Market vs. Electric Vehicles">
+                        
+                        <p>The box-and-whisker plot compares the distribution of car prices in the overall market with that of electric vehicles (BEVs - Battery Electric Vehicles) specifically. It indicates that electric vehicles tend to be priced higher on average compared to the general market, as seen by the position of the 'BEV average price' relative to the median of the overall market.</p>
+                    </div>
+                    <div class="visualization-description">
+                        <h3>Total Electric Vehicle Sales by State Over Years</h3>
+                        <img src="electric sales by state.png" alt="Total Electric Vehicle Sales by State Over Years">
+                        
+                        <p>This line graph shows the total number of electric vehicles in different states over several years. The scale on the left is exponential, indicating the total number is quite large, and the lines for each state are relatively flat, suggesting that the number of electric vehicles has not changed dramatically over the years covered in the graph.</p>
+                    </div>
+                    <div class="visualization-description">
+                        <h3>Hybrid-Electric, Plug-In Hybrid-Electric, and Electric Vehicle Sales</h3>
+                        <img src="sales by year .png" alt="Hybrid-Electric, Plug-In Hybrid-Electric, and Electric Vehicle Sales">
+                        
+                        <p>This bar chart shows the sales of hybrid-electric, plug-in hybrid-electric, and all-electric vehicles over two decades. It illustrates a growing trend in the sales of all three types of vehicles, with hybrid-electric sales leading, followed by plug-in hybrids, and a significant increase in all-electric vehicle sales in recent years.</p>
+                    </div>
+                    <div class="visualization-description">
+                        <h3>Heatmap of Total Vehicles by Region and Period</h3>
+                        <img src="sales by region and year .png" alt="Heatmap of Total Vehicles by Region and Period">
+                        
+                        <p>This heatmap displays the total number of vehicles by region for two periods: 2017-2019 and 2020-2023. The 'Other' category has the highest numbers, greatly surpassing the Midwest and Northeast regions, with an increase observed in the later period.</p>
+                    </div>
+                    <div class="visualization-description">
+                        <h3>Cumulative Total Vehicle Sales by Year</h3>
+                        <img src="sales by year .png" alt="Cumulative Total Vehicle Sales by Year">
+                        
+                        <p>This area chart shows the cumulative sales of vehicles year over year. It indicates a steady increase in total vehicle sales, with a gradual slope that shows no significant spikes or drops, suggesting a consistent growth in vehicle purchases or registrations over the time period shown.</p>
+                    </div>
+                    <div class="visualization-description">
+                        <h3>U.S. Vehicle Sales by Vehicle Type (January 2021 - May 2023)</h3>
+                        <img src="USA_sales_cars.png" alt="U.S. Vehicle Sales by Vehicle Type (January 2021 - May 2023)">
+                        
+                        <p>This graph from Statista provides a comprehensive overview of U.S. vehicle sales from January 2021 through May 2023, segmented by vehicle type. It illustrates the sales volume of different types of vehicles, including petrol cars, electric vehicles, and hybrids, in thousands of units. The visualization shows trends over the specified period, indicating shifts in consumer preferences towards different vehicle types. The extensive coverage of various vehicle categories offers insights into the automotive market's dynamics and the growing significance of electric and hybrid vehicles amidst environmental concerns and technological advancements</p>
+                    </div>
+                </section>
+                
+            <!-- Additional sections for summarizing data, etc. -->
+        </main>
+        <footer>
+            <p>© Aryaman singh</p>
+        </footer>
+
+
+            <script src="style.js"></script>
+    </body>
+</html>
